@@ -1,0 +1,143 @@
+.clear{ clear: both;}
+
+h3{ font-size: 20px !important; margin-bottom: 30px !important; padding-bottom: 10px !important; border-bottom: 1px solid #eee; margin-top: 0px !important;}
+
+/*ol {list-style: none; counter-reset: li}
+ol li::before {content: counter(li); color: red;
+    display: inline-block; width: 1em; margin-left: -1.5em;
+    margin-right: 0.5em; text-align: right; direction: rtl}*/
+
+/* Tell the <li> to not display numbers, but keep track of what the numbers should be */
+ol{ padding-left: 30px;}
+ol li {
+  counter-increment: list;
+  list-style-type: none;
+  position: relative; 
+}
+/* Outout the numbers using the counter() function, but use a custom color, and position the numbers how we want */
+ol li:before {
+  color: #e75204;
+  content: counter(list) ".";
+  left:-32px;
+  position: absolute;
+  text-align: right;
+  width: 26px;
+}
+
+.row{ margin-bottom: 10px;}
+.col-xs-12{ margin-bottom: 10px;}
+
+.field-collection-view .field-label{ width: 100% !important;}
+
+.field-name-field-survey-questions > div.field-label{ display: none;}
+.field-name-field-cll-survey-question > div.field-label{ display: none;}
+/*.field-name-field-cll-survey-question-option div.field-label{ display: none;}*/
+/*.field-name-field-cll-survey-quest-opt-txt .field-items .field-item{white-space: pre-line;}
+.field-name-field-cll-survey-quest-opt-xtab .field-items .field-item{white-space: pre-line;}
+.field-name-field-cll-survey-quest-opt-inst .field-items .field-item{white-space: pre-line;}*/
+
+.group-question-left-node{ float: left; width: 30px; clear: both;}
+.group-question-left-node .question-num{ font-size: 1.1em; font-weight: bold; color:#F00;}
+.group-question-right-node{ float: right; width: 95%;}
+
+.group-question-node{ clear: both;}
+.group-question-node .field-name-field-cll-survey-question-script{ width: 65%; float: left;}
+.group-question-node .field-name-field-cll-survey-question-xtab{ width: 15%; float: left; margin-left: 2%;}
+.group-question-node .field-name-field-cll-survey-question-xtab .field-label{ width: 100% !important;}
+.group-question-node .field-name-field-cll-survey-question-type{ width: 15%; float: right;}
+.group-question-node .field-name-field-cll-survey-question-type .field-label{ width: 100% !important;}
+
+.group-config-node{ clear: both; display: none;}
+
+.group-response-node .field-name-field-cll-survey-question-option div.field-label { display: none;}
+.group-response-node .field-name-field-cll-survey-question-option div.field-items div.field-label{ display: block;}
+.group-response-node .field-name-field-cll-survey-quest-opt-txt{ float: left; width: 40%; margin-right: 2%;}
+.group-response-node .field-name-field-cll-survey-quest-opt-xtab{ float: left; width: 25%;}
+.group-response-node .field-name-field-cll-survey-quest-opt-inst{ float: right; width: 25%;}  
+
+.field-collection-container{ border-bottom: none !important;}
+
+.field-name-field-cll-survey-question-appro .field-label{ width: 80px !important; }
+
+.field-name-field-survey-questions{ border-top: 1px solid #6ac552; border-bottom: 1px solid #6ac552;}
+
+.group-comment{ display: none;}
+
+/*Impresion*/
+body.node-type-agendamiento-print #rootwizard .navbar{ display:none;}
+body.node-type-agendamiento-print #rootwizard .tab-content .tab-pane{ display:block;}
+body.node-type-agendamiento-print .row{ margin:15px 0px;}
+body.node-type-agendamiento-print .submitted .user-picture{ display:none;}
+body.node-type-agendamiento-print .print-footer{ padding-top:15px; padding-bottom:15px; margin-top:20px; background:#00723f; color:#FFF; font-weight:bold; padding-left:0px !important; padding-right:0px !important; width:100% !important;}
+body.node-type-agendamiento-print .print-footer a{ color:#FFF; font-style:italic;}
+body.node-type-agendamiento-print .datos-control{ display:none;}
+
+
+
+
+/* Extra small devices (phones, 600px and down) xxs*/
+@media only screen and (max-width: 600px) {
+	.tab-md{ display: none !important;}
+  	.tab-sm{ display: none !important;}
+  	.tab-xs{ display: block !important;}
+
+	.group-question-node .field,
+	.group-response-node .field{ width: 100%; float: none; margin-left:0px; margin-bottom: 10px;}
+	.group-response-node .field-collection-view{ margin-left: 0px;}
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) xs*/
+@media only screen and (min-width: 600px) {
+	.tab-md{ display: none !important;}
+  	.tab-sm{ display: block !important;}
+  	.tab-xs{ display: none !important;}
+
+	.group-question-node .field,
+	.group-response-node .field{ width: 100%; float: none; margin-left:0px; margin-bottom: 10px;}
+	.group-response-node .field-collection-view{ margin-left: 0px;}
+} 
+
+/* Medium devices (landscape tablets, 768px and up)  sm*/
+@media only screen and (min-width: 768px) {
+	.tab-md{ display: block !important;}
+  	.tab-sm{ display: none !important;}
+  	.tab-xs{ display: none !important;}
+
+	.group-question-node .field.field-name-field-cll-survey-question-script{ width: 100%; float: none; margin-bottom: 10px;}
+	.group-question-node .field.field-name-field-cll-survey-question-xtab{ width: 45%; float: left; margin-left:0px;}
+	.group-question-node .field.field-name-field-cll-survey-question-type { width: 45%; float: right;}
+
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-txt{ width: 45%; float: left; }
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-xtab{ width: 45%; float: right; margin-left: 0px;}
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-inst{ width: 100%; float: none;}
+} 
+
+/* Large devices (laptops/desktops, 992px and up)  md */
+@media only screen and (min-width: 992px) {
+	.tab-md{ display: block !important;}
+  	.tab-sm{ display: none !important;}
+  	.tab-xs{ display: none !important;}
+
+	.group-question-node .field.field-name-field-cll-survey-question-script{ width: 65%; float: left; margin-bottom: 0px;}
+	.group-question-node .field.field-name-field-cll-survey-question-xtab{ width: 15%; float: left; margin-left: 2%;}
+	.group-question-node .field.field-name-field-cll-survey-question-type { width: 15%; float: right;}
+
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-txt{ width: 40%; float: left; }
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-xtab{ width: 25%; float: left; margin-left: 2%;}
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-inst{ width: 25%; float: right;}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) lg */
+@media only screen and (min-width: 1200px) {
+	.tab-md{ display: block !important;}
+	.tab-sm{ display: none !important;}
+	.tab-xs{ display: none !important;}
+
+	.group-question-node .field.field-name-field-cll-survey-question-script{ width: 65%; float: left; margin-bottom: 0px;}
+	.group-question-node .field.field-name-field-cll-survey-question-xtab{ width: 15%; float: left; margin-left: 2%;}
+	.group-question-node .field.field-name-field-cll-survey-question-type { width: 15%; float: right;}
+
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-txt{ width: 40%; float: left; }
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-xtab{ width: 25%; float: left; margin-left: 2%;}
+	.group-response-node .field.field-name-field-cll-survey-quest-opt-inst{ width: 25%; float: right;}
+}

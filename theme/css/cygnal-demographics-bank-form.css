@@ -1,0 +1,79 @@
+
+.error{ font-size:11px;}
+
+.clear{ clear: both;}
+
+/*Textarea line number*/
+div.numberedtextarea-wrapper { position: relative; }
+div.numberedtextarea-wrapper textarea {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+  white-space: nowrap; overflow-x: auto; overflow-y: auto;
+}
+div.numberedtextarea-line-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 25px !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background: #f5f5f5;
+  padding-left: 6px !important;
+}
+div.numberedtextarea-number {
+  padding-right: 6px;
+  text-align: right;
+}
+
+
+/*Form survey*/
+ textarea {display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;  
+  resize: none; white-space: nowrap; overflow-x: auto;}
+ .grippie{ display: none;}
+ .tabledrag-toggle-weight-wrapper{ display: none;}
+ .field-multiple-drag{ display: none;}
+ table  tr.draggable:hover{ border: 2px solid #DDD;}
+ table  tr td table  tr.draggable:hover{ border: 2px dotted #F00;}
+ 
+/*Demographics*/
+.field-name-field-survey-question-control fieldset{ border: none; box-shadow: none; -webkit-box-shadow:none;}
+.field-name-field-survey-question-control fieldset legend{ display: none;}
+.field-name-field-survey-question-control fieldset .panel-body{ border: none; padding: 0px;}
+
+.group-labels{clear: both;}
+.group-labels .field-name-field-cll-survey-quest-label{width: 70%; float: left;}
+.group-labels .field-name-field-cll-survey-quest-xtab{width: 25%; float: right;}
+
+.group-options{clear: both;}
+.group-options .field-name-field-cll-survey-quest-opt-scr{width: 30%; float: left; margin-right: 2%;}
+.group-options .field-name-field-cll-survey-quest-option-xt{width: 30%; float: left;}
+.group-options .field-name-field-cll-survey-quest-option-in{width: 30%; float: right;}
+
+
+ #edit-field-survey-question-control table.field-multiple-table tbody tr{ background: #FFF; border:none; border-top:none;}
+ #edit-field-survey-question-control table.field-multiple-table tbody tr:hover{border: 2px dashed #DDD !important; border-top: 2px dashed #DDD !important;}
+ #edit-field-survey-question-control table > thead > tr > th{ border: none; display: none;}
+ #edit-field-survey-question-control table.field-multiple-table tbody tr td{ background: #FFF; border: none; border-bottom: 2px dashed #DDD !important; padding-bottom: 0px; padding-top: 0px;}
+ #edit-field-survey-question-control table.field-multiple-table tbody tr td:hover{border: 2px dashed #DDD !important; border-bottom: 2px dashed #DDD !important; border-top: 2px dashed #DDD !important;}
+ #edit-field-survey-question-control table.field-multiple-table tbody tr td .panel-body{padding-bottom: 0px; padding-top: 2px; padding-left: 0px; padding-right: 0px;}
+
+.wrapper-buttom-remove-question-control{ height: 34px; clear: both; margin-bottom: 10px;}
+.button-remove-question-control{ float: right; display: none;}
+
+.group-tooltip-demo{ clear: both;}
+.group-tooltip-demo .field-name-field-cll-survey-quest-tooltip{ height: 40px; margin-top: 5px; display: none;}
+.group-tooltip-demo .field-name-field-cll-survey-quest-tooltip ul{ float: right;}
+.group-tooltip-demo .field-name-field-cll-survey-quest-tooltip ul li{ list-style: none; display: inline-block; width: 200px; text-align: center;}
+.group-tooltip-demo .field-name-field-cll-survey-quest-tooltip ul li button{ width: 100%;}
+ 
+ .form-item-title{display: none;}
+
+.group-tooltip-demo .field-name-field-cll-survey-quest-tooltip #question_demographics_bank{ display: none;}

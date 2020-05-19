@@ -1,0 +1,94 @@
+
+.error{ font-size:11px;}
+
+.clear{ clear: both;}
+
+/*Textarea line number*/
+div.numberedtextarea-wrapper { position: relative; }
+div.numberedtextarea-wrapper textarea {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+  white-space: nowrap; overflow-x: auto; overflow-y: auto;
+}
+div.numberedtextarea-line-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 25px !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background: #f5f5f5;
+  padding-left: 6px !important;
+}
+div.numberedtextarea-number {
+  padding-right: 6px;
+  text-align: right;
+}
+
+
+/*Form survey*/
+ textarea {display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;  
+  resize: none; white-space: nowrap; overflow-x: auto;}
+ .grippie{ display: none;}
+ .tabledrag-toggle-weight-wrapper{ display: none;}
+ .field-multiple-drag{ display: none;}
+ table  tr.draggable:hover{ border: 2px solid #DDD;}
+ table  tr td table  tr.draggable:hover{ border: 2px dotted #F00;}
+ .field-name-field-cll-survey-question fieldset{ border: none; box-shadow: none; -webkit-box-shadow:none;}
+ .field-name-field-cll-survey-question fieldset legend{ display: none;}
+/*#survey-node-form .field-name-field-cll-survey-question fieldset fieldset legend{ display: block;}*/
+ .field-name-field-cll-survey-question fieldset .panel-body{ border: none; padding: 0px;}
+
+ .group-question-left{ display: none;}
+ .group-question-right{ width: 100%;}
+
+ .group-tooltip{ clear: both;}
+ .group-tooltip .field-name-field-cll-survey-question-instru{ height: 40px;}
+ .group-tooltip .field-name-field-cll-survey-question-instru ul{ float: right;}
+ .group-tooltip .field-name-field-cll-survey-question-instru ul li{ list-style: none; display: inline-block; width: 130px; text-align: center;}
+ .group-tooltip .field-name-field-cll-survey-question-instru ul li button{ width: 100%;}
+ .group-tooltip .field-name-field-cll-survey-question-instru #question_bank{ display: none;}
+ .group-tooltip .field-name-field-cll-survey-question-instru #question_remove{ display: none;}
+
+ .group-config{ display: none;}
+
+ .group-question-right .group-question{ clear: both;}
+.group-question-right .field-name-field-cll-survey-question-script{ width: 75%; float: left;}
+ .group-question-right .field-name-field-cll-survey-question-xtab{ width: 10%; float: left; margin-left: 2%;}
+ .group-question-right .field-name-field-cll-survey-question-type{ width: 10%; float: right;}
+ .group-question-right .group-config{ clear: both;}
+
+.group-question-right .group-options{ clear: both;} 
+.group-question-right .field-name-field-cll-survey-question-option{clear: both;}
+.group-question-right .field-name-field-cll-survey-quest-opt-txt{ width: 30%; float: left;}
+.group-question-right .field-name-field-cll-survey-quest-opt-xtab{ width: 30%; float: left; margin-left: 2%;}
+.group-question-right .field-name-field-cll-survey-quest-opt-inst{ width: 30%; float: right;}
+
+ #edit-field-survey-questions table.sticky-header{ background: #f5f5f5;}
+
+ #edit-field-survey-questions table.field-multiple-table tbody tr{ background: #FFF; border:none; border-top:none;}
+ #edit-field-survey-questions table.field-multiple-table tbody tr:hover{border: 2px dashed #DDD !important; border-top: 2px dashed #DDD !important;}
+ #edit-field-survey-questions table > thead > tr > th{ border: none;}
+ #edit-field-survey-questions table.field-multiple-table tbody tr td{ background: #FFF; border: none; border-bottom: 2px dashed #DDD !important; padding-bottom: 0px; padding-top: 0px;}
+ #edit-field-survey-questions table.field-multiple-table tbody tr td:hover{border: 2px dashed #DDD !important; border-bottom: 2px dashed #DDD !important; border-top: 2px dashed #DDD !important;}
+ #edit-field-survey-questions table.field-multiple-table tbody tr td .panel-body{padding-bottom: 0px; padding-top: 2px; padding-left: 0px; padding-right: 0px;}
+
+.group-answer-bank{ padding-top: 0px; padding-bottom: 0px;}
+.group-answer-bank .field-name-field-cll-survey-quest-opt-answ{ padding-bottom: 0px; padding-left: 0px; margin-bottom: 0px; width: 20%; float: right;}
+.group-answer-bank .field-name-field-cll-survey-quest-opt-answ label{ display: none;}
+.group-answer-bank .field-name-field-cll-survey-quest-opt-answ select{ height: 20px; padding: 1px; font-size: 0.85em;}
+
+.field-name-field-question-bank-category{ width: 20%;}
+.field-name-field-question-bank-company{ width: 20%;}
+
+.form-textarea-wrapper label.error{ margin-left: 40px;}
+
+ .form-item-title{display: none;}

@@ -1,0 +1,7 @@
+name = Survey Cygnal
+description = Cygnal Pulse Survey Platform 
+package = Cygnal
+core = 7.x
+dependencies[] = libraries
+dependencies[] = block
+version = "1.0"

@@ -1,0 +1,19 @@
+
+
+body.node-type-agendamiento h3{
+	margin-top:10px !important;	
+}
+
+body.node-type-agendamiento .row{
+	margin:20px 0px !important; 
+} 
+
+
+/*Impresion*/
+body.node-type-agendamiento-print #rootwizard .navbar{ display:none;}
+body.node-type-agendamiento-print #rootwizard .tab-content .tab-pane{ display:block;}
+body.node-type-agendamiento-print .row{ margin:15px 0px;}
+body.node-type-agendamiento-print .submitted .user-picture{ display:none;}
+body.node-type-agendamiento-print .print-footer{ padding-top:15px; padding-bottom:15px; margin-top:20px; background:#00723f; color:#FFF; font-weight:bold; padding-left:0px !important; padding-right:0px !important; width:100% !important;}
+body.node-type-agendamiento-print .print-footer a{ color:#FFF; font-style:italic;}
+body.node-type-agendamiento-print .datos-control{ display:none;}

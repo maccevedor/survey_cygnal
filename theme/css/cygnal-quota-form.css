@@ -1,0 +1,122 @@
+.progress-bar{ 
+	background-color:#134487 !important;
+}
+
+.error{ font-size:11px;}
+
+
+#rootwizard h3 span.label-success{background-color: #134487;}
+
+#agendamiento-node-form .group-agu-dar{
+	display:none;	
+}
+
+#agendamiento-node-form .group-agu-dac{
+	display:none;	
+}
+
+#agendamiento-node-form .group-agu-daci{
+	display:none;
+}
+
+
+#agendamiento-node-form .field-name-field-agu-fer .form-group:last-child,
+#agendamiento-node-form .field-name-field-agu-fer.panel:last-child{ border: none; margin: 0px;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset legend{ background: none; padding: 0px; border: 0px;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset legend span{ font-weight: bold; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset legend span.panel-title{ font-size: 14px;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset{ border:none;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset .panel-body{ padding:0px;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset .date-padding{padding:0px; width:100%;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset .date-padding input{ width:100%;}
+#agendamiento-node-form .field-name-field-agu-fer fieldset .panel-body .date-no-float{ width:100%; margin:0px;}
+
+#agendamiento-node-form .field-name-field-agu-fen .form-group:last-child,
+#agendamiento-node-form .field-name-field-agu-fen.panel:last-child{ border: none; margin: 0px;}
+#agendamiento-node-form .field-name-field-agu-fen fieldset legend{ display:none;}
+/*#agendamiento-node-form .field-name-field-agu-fen fieldset .date-padding div:first-child{ width:45%; float:left;}*/
+#agendamiento-node-form .field-name-field-agu-fen fieldset{ border:none;}
+#agendamiento-node-form .field-name-field-agu-fen fieldset .panel-body{ padding:0px;}
+#agendamiento-node-form .field-name-field-agu-fen fieldset .date-padding{padding:0px; width:100%;}
+/*#agendamiento-node-form .field-name-field-agu-fen fieldset .date-padding div:last-child{ width:45%; float:right;}*/
+#agendamiento-node-form .field-name-field-agu-fen fieldset .date-padding input{ width:100%;}
+#agendamiento-node-form .field-name-field-agu-fen fieldset .panel-body .date-no-float{ width:100%;}
+
+#agendamiento-node-form .field-name-field_agu_fen_aux .form-control[readonly]{ background:#FFF;}
+#agendamiento-node-form .field-name-field_agu_fei_aux .form-control[readonly]{ background:#FFF;}
+
+
+#agendamiento-node-form .field-name-field-pqrd-causa .tabledrag-toggle-weight-wrapper a{display:none;}
+#agendamiento-node-form .field-name-field-pqrd-causa .draggable td:first-child{ display:none;}
+#agendamiento-node-form .field-name-field-pqrd-causa .table-responsive button{ float:right;}
+
+#agendamiento-node-form .field-name-field-pqrd-causa .table#field-pqrd-causa-values tbody tr{ display:block;}
+#agendamiento-node-form .field-name-field-pqrd-causa .table#field-pqrd-causa-values tbody tr + tr{ display:none;}
+#agendamiento-node-form .field-name-field-pqrd-causa .table#field-pqrd-causa-values tbody tr + tr + tr{ display:none;}
+#agendamiento-node-form .field-name-field-pqrd-causa{ padding:15px; border:1px solid #ccc; border-radius:5px;}
+#agendamiento-node-form .field-name-field-pqrd-causa table label{ font-size:14px;}
+#agendamiento-node-form .field-name-field-pqrd-causa table label.error{ font-size:11px;}
+/*#agendamiento-node-form .field-name-field-pqrd-causa table tr.draggable{ display:none;}
+#agendamiento-node-form .field-name-field-pqrd-causa table:first-child{ display:block;}*/
+
+
+#agendamiento-node-form .form-item-title{
+	display:none;	
+}
+
+#agendamiento-node-form .vertical-tabs-list{ display:none;}
+
+#agendamiento-node-form h3{
+	margin-top:30px !important;	
+}
+
+#agendamiento-node-form .row{
+	margin:20px 0px !important; 
+}
+
+#agendamiento-node-form #list-node-client .view-filters{ 
+	display:none;
+}
+
+#agendamiento-node-form #list-agenda-funcionario .view-filters{ 
+	display:none;
+}
+
+#agendamiento-node-form #ver-agenda-funcionario{ margin-top: 25px;}
+
+#agendamiento-node-form .input-group-btn{ vertical-align:top;}
+
+#agendamiento-node-form .oculto{ display:none;}
+#agendamiento-node-form .oculto-campo{ width:100%; height:34px; padding:6px 0px; margin-top:-50px; z-index:100; background:none; position:relative;}
+#agendamiento-node-form .disabled-campo{ background:#eee; color:#888; text-shadow:1px 1px 1px #FFF; opacity:1;}
+
+/*Ocultar campos por reglas de negocio*/
+
+#agendamiento-node-form #edit-field-pqrd-codigo-nurc{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-tipificacion{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-fecha-radicacion{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-tipo-peticion{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-cantidad-acuses{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-funsionario-asig{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-regional{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-habeas-data{ display:none;}
+
+
+#agendamiento-node-form #edit-field-pqrd-tipo-institucion{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-tipo-institucion-afec{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-genero{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-edad{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-nivel-educativo{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-regimen-afilia{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-grupo-etnico{ display:none;}
+#agendamiento-node-form #edit-field-pqrd-poblacion-esp{ display:none;}
+
+
+#agendamiento-node-form  .field-name-field-pqrd-dominio-otro{ display:none;}
+#agendamiento-node-form  .field-name-field-pqrd-dominio-otro-afec{ display:none;}
+
+#agendamiento-node-form #edit-field-pqrd-mot-cierre-instru{ display:none;}
+
+#agendamiento-node-form .select2-container .select2-selection--single{ height:33px;}
+
+#agendamiento-node-form .form-actions{ text-align:right}

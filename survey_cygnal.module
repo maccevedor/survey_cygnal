@@ -1,0 +1,437 @@
+<?php
+	/* -----------------------------------------------------------------------------------------
+	| Survey generator.
+	|-------------------------------------------------------------------------------------------
+	| @copyright: Achb
+	| @author: ALFONSO CHAVEZ B <alfonso.chb@gmail.com>
+	| @Description: Functions general, Survey sistem.
+	|-------------------------------------------------------------------------------------------
+	*/
+
+	 /**
+ * implimentation of hook_hook_info_alter()
+ */
+
+function survey_cygnal_permission() {
+  return array(    
+	 'view download file' => array(
+      'title' => t('View download file"'),
+	  'description'=>t('if you activate this permission the role can visualize the download file'),
+     ),
+	 'view quota file' => array(
+      'title' => t('View quota file"'),
+	  'description'=>t('if you activate this permission the role can visualize the quotas file'),
+     ),
+     'view survey file' => array(
+      'title' => t('View survey file"'),
+	  'description'=>t('if you activate this permission the role can visualize the survey file'),
+     ),
+     'view script file' => array(
+      'title' => t('View script file"'),
+	  'description'=>t('if you activate this permission the role can visualize the script file'),
+     ),
+     'view toplines file' => array(
+      'title' => t('View toplines file"'),
+	  'description'=>t('if you activate this permission the role can visualize the toplines file'),
+     ),
+     'view crosstab file' => array(
+      'title' => t('View crosstab file"'),
+	  'description'=>t('if you activate this permission the role can visualize the crosstab file'),
+     ),
+     'view question bank' => array(
+      'title' => t('View question bank"'),
+	  'description'=>t('if you activate this permission the role can visualize the question bank in create survey'),
+     ),
+     'view demographics bank' => array(
+      'title' => t('View demographics bank"'),
+	  'description'=>t('if you activate this permission the role can visualize the demographics bank in create survey'),
+     ),  
+     
+  );
+}
+
+	/**
+	 * Implements hook_menu();
+	 */
+	function survey_cygnal_menu() 
+	{
+		$path = drupal_get_path('module', 'survey_cygnal');
+   		require_once "$path/survey_cygnal.include";
+		$items = array();
+		
+		$items['survey/question-bank/list'] = array(
+			'title' => t('Question Bank'),    
+			'page callback' => '_survey_cygnal_get_question_bank',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+		$items['survey/question-bank/data'] = array(
+			'title' => t('Question Bank'),    
+			'page callback' => '_survey_cygnal_get_question_bank_data',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+		$items['survey/demographics-bank/list'] = array(
+			'title' => t('Demographics Bank'),    
+			'page callback' => '_survey_cygnal_get_demographics_bank',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+		$items['survey/demographics-bank/data'] = array(
+			'title' => t('Demographics Bank'),    
+			'page callback' => '_survey_cygnal_get_demographics_bank_data',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+		$items['survey/response-bank/data'] = array(
+			'title' => t('Response Bank'),    
+			'page callback' => '_survey_cygnal_get_response_bank_data',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+		$items['survey/consumer/data'] = array(
+			'title' => t('Consumer data'),    
+			'page callback' => '_survey_cygnal_get_customer_by_consultant_data',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+		$items['survey/title/validate'] = array(
+			'title' => t('Validate Title'),    
+			'page callback' => '_survey_cygnal_validate_survey_title',
+			'file' => 'survey_cygnal.include',
+			'access arguments' => array('access content'),
+			'type' => MENU_CALLBACK,
+		  );
+
+
+		# No visible
+		$items['survey/report/survey/download-file'] = array(
+			'title' 			=> t('Generate link download file'),    
+			'page callback' 	=> '_survey_cygnal_download_file',
+			'access arguments' => array('view download file'),
+			'file' 				=> 'process/survey_cygnal_download_file.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+
+		$items['survey/report/survey/download-file-quota'] = array(
+			'title' 			=> t('Generate link download file'),    
+			'page callback' 	=> '_survey_cygnal_download_file_only_quota',
+			'access arguments' => array('view download file'),
+			'file' 				=> 'process/survey_cygnal_download_file.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+
+		$items['survey/report/survey/pdf'] = array(
+			'title' 			=> t('Generate survey file'),    
+			'page callback' 	=> '_survey_cygnal_survey_file',
+			'access arguments' => array('view survey file'),
+			'file' 				=> 'process/survey_cygnal_survey.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+		$items['survey/report/script/doc'] = array(
+			'title' 			=> t('Generate script file'),    
+			'page callback' 	=> '_survey_cygnal_script_file',
+			'access arguments' => array('view script file'),
+			'file' 				=> 'process/survey_cygnal_script.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+		$items['survey/report/quota/xls'] = array(
+			'title' 			=> t('Generate quota file'),    
+			'page callback' 	=> '_survey_cygnal_quota_file',
+			'access arguments' => array('view quota file'),
+			'file' 				=> 'process/survey_cygnal_quota.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+		$items['survey/report/toplines/doc'] = array(
+			'title' 			=> t('Generate toplines file'),    
+			'page callback' 	=> '_survey_cygnal_toplines_file',
+			'access arguments' => array('view toplines file'),
+			'file' 				=> 'process/survey_cygnal_toplines.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+		$items['survey/report/crosstab/xls'] = array(
+			'title' 			=> t('Generate crosstab file'),    
+			'page callback' 	=> '_survey_cygnal_crosstab_file',
+			'access arguments' => array('view crosstab file'),
+			'file' 				=> 'process/survey_cygnal_crosstab.inc',			
+			'type' 				=> MENU_CALLBACK,
+		);
+		
+		return $items;
+	}
+
+/**
+ * implimentation of hook_hook_info_alter()
+ */
+function survey_cygnal_form_alter(&$form, &$form_state, $form_id) {	
+	
+	switch ($form_id) {
+		case 'survey_node_form':
+			  	module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_survey($form,$form_state);
+			 	break;
+		case 'frame_node_form':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_frame($form,$form_state);
+			 	break;
+		case 'quota_node_form':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_quota($form,$form_state);
+			 	break;		
+		case 'consumer_node_form':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_consumer($form,$form_state);
+			 	break;
+		case 'consultant_node_form':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_consultant($form,$form_state);
+			 	break;	 		 	
+		case 'question_bank_node_form':
+			  	module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_question_bank($form,$form_state);
+			 	break;
+		case 'demographics_recode_bank_node_form':
+			  	module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_demographics_bank($form,$form_state);
+			 	break;
+		case 'company_node_form':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_company($form,$form_state);
+			 	break;
+		case 'user_node_form':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_form_alter_custom_user($form,$form_state);
+			 	break;	
+			 	
+	}	
+
+	#Comportamientos especiales para campos editables en nodo
+	$pos = strpos($form_id, "field_survey_status");#Busca el nombre del campo en el id del formulario, si lo encuentra hace el alter	
+	if ($pos !== false) {	
+		module_load_include('include', 'survey_cygnal');
+		_survey_cygnal_form_alter_custom_survey_status($form,$form_state);
+	}
+	
+}
+
+/** 
+ * Este metodo se dispara al momento de cargar toda la forma, solo es llamado por el formulario de PQRD en su estado de edicion
+ */
+function survey_cygnal_after_build($form, &$form_state){											
+
+	if(is_numeric($form['nid']['#value'])){	
+		module_load_include('include', 'survey_cygnal');		
+		$statuses=_survey_cygnal_get_statuses_by_rol($form);	
+		$form['field_survey_status']['und']['#options']=$statuses;		
+	}
+	
+	return $form;	
+}
+
+
+/**
+ * Implementation of hook_node_view().
+ */
+
+function survey_cygnal_node_view($node) {
+	
+	switch ($node->type) {
+		case 'survey':
+			  	module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_survey($node);	
+			 	break;
+		case 'frame':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_frame($node);
+			 	break;
+		case 'quota':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_quota($node);
+			 	break;		
+		case 'consumer':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_consumer($node);
+			 	break;
+		case 'consultant':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_consultant($node);
+			 	break;	 		 	
+		case 'question_bank':
+			  	module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_question_bank($node);
+			 	break;
+		case 'demographics_recode_bank':
+			  	module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_demographics_bank($node);
+			 	break;
+		case 'company':
+				module_load_include('include', 'survey_cygnal');
+				_survey_cygnal_node_alter_custom_company($node);
+			 	break;		 		 	
+			 	
+	}
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function survey_cygnal_theme() {
+  $path = drupal_get_path('module', 'survey_cygnal') .'/theme';
+  require_once "$path/theme.inc";  
+
+  return array(    
+	'survey_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_survey_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'frame_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_frame_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'quota_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_quota_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'consumer_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_consumer_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'consultant_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_consultant_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'question_bank_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_question_bank_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'demographics_recode_bank_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_demographics_bank_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),
+    'company_node_form' => array(
+      'arguments' => array('form' => NULL,),
+	  'template' => 'cygnal_company_form',
+      //'file' => 'theme.inc',
+      'path' => $path."/tpl",	
+	  'render element' => 'form',  
+    ),    
+	'survey_node_view' => array(      
+      'template' => 'cygnal_survey_node',
+	  'path' => $path."/tpl",
+      ),
+	'frame_node_view' => array(      
+      'template' => 'cygnal_frame_node',
+	  'path' => $path."/tpl",
+      ),
+	'quota_node_view' => array(      
+      'template' => 'cygnal_quota_node',
+	  'path' => $path."/tpl",
+      ),
+	'consumer_node_view' => array(      
+      'template' => 'cygnal_consumer_node',
+	  'path' => $path."/tpl",
+      ),
+	'consultant_node_view' => array(      
+      'template' => 'cygnal_consultant_node',
+	  'path' => $path."/tpl",
+      ),
+	'question_bank_node_view' => array(      
+      'template' => 'cygnal_question_bank_node',
+	  'path' => $path."/tpl",
+      ),
+	'demographics_recode_bank_node_view' => array(      
+      'template' => 'cygnal_demographics_bank_node',
+	  'path' => $path."/tpl",
+      ),
+	'company_node_view' => array(      
+      'template' => 'cygnal_company_node',
+	  'path' => $path."/tpl",
+      ),
+	'survey_mail_approved' => array(      
+      'template' => 'cygnal_survey_approved',
+	  'path' => $path."/tpl/mail",
+      ),
+	
+  );
+}
+
+/**
+ * Implementation of hook_node_presave().
+ */
+function survey_cygnal_node_presave($node) {
+
+	switch ($node->type) {
+		case 'survey':
+			  	module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_survey_company($node);
+				$node=_survey_cygnal_set_survey_title($node);
+				$node=_survey_cygnal_set_survey_question_num($node);
+				$node=_survey_cygnal_notify($node);	
+			 	break;
+		case 'frame':
+			  	module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_frame_company($node);	
+			 	break;
+		case 'quota':
+			  	module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_quota_company($node);					
+			 	break;
+		case 'consumer':
+				module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_consumer_company($node);
+				$node=_survey_cygnal_set_consumer_title($node);
+			 	break;
+		case 'consultant':
+			  	module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_consultant_company($node);
+				$node=_survey_cygnal_set_consultant_title($node);	
+			 	break;	 		 		 	
+		case 'question_bank':
+			  	module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_question_bank_company($node);
+				$node=_survey_cygnal_set_question_bank_title($node);	
+			 	break;
+		case 'demographics_recode_bank':
+			  	module_load_include('include', 'survey_cygnal');
+				$node=_survey_cygnal_set_demographics_bank_company($node);
+				$node=_survey_cygnal_set_demographics_bank_title($node);	
+			 	break;	 		 	
+			 	
+	}
+	return $node; 
+}
+
+function survey_cygnal_user_presave(&$edit, $account, $category) {
+
+  if ($account->is_new) {
+  		module_load_include('include', 'survey_cygnal');
+  		_survey_cygnal_set_user_company($edit);		
+  }
+}

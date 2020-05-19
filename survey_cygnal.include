@@ -1,0 +1,919 @@
+<?php
+	/* -----------------------------------------------------------------------------------------
+	| Survey generator.
+	|-------------------------------------------------------------------------------------------
+	| @copyright: Achb
+	| @author: ALFONSO CHAVEZ B <alfonso.chb@gmail.com>
+	| @Description: Functions general, Survey sistem.
+	|-------------------------------------------------------------------------------------------
+	*/
+
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_attach(&$form) {
+	global $user,$base_url;
+	#attached js
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.bootstrap-touchspin.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.validate.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.bootstrap.wizard.min.js';		
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/select2.full.js';	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/moment.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/bootstrap-datetimepicker.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.numberedtextarea.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/jquery.dataTables.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/dataTables.colVis.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/dataTables.tableTools.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/dataTables.bootstrap.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatable-responsive/datatables.responsive.min.js';
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/autosize.min.js';
+
+	#attached css	
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/font-awesome.min.css';
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/jquery.bootstrap-touchspin.min.css';
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/select2.min.css';
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/select2-bootstrap.css';
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/bootstrap-datetimepicker.css';
+		
+	drupal_add_js( array( 'base_url' => $base_url ), 'setting' );
+
+	foreach($user->roles as $key=>$role){  
+		if($key!=2){  
+			$rol_usuario=$key;
+		}
+	}
+	drupal_add_js( array( 'RoleId' => $rol_usuario ), 'setting' );
+} 
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_node_alter_custom_attach() {
+	#attached js
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.bootstrap-touchspin.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.validate.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.bootstrap.wizard.min.js');		
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/select2.full.js');	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/moment.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/bootstrap-datetimepicker.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/jquery.numberedtextarea.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/jquery.dataTables.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/dataTables.colVis.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/dataTables.tableTools.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatables/dataTables.bootstrap.min.js');
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . '/theme/js/plugin/datatable-responsive/datatables.responsive.min.js');
+
+	#attached css	
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . '/theme/css/font-awesome.min.css');
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . '/theme/css/jquery.bootstrap-touchspin.min.css');
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . '/theme/css/select2.min.css');
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . '/theme/css/select2-bootstrap.css');
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . '/theme/css/bootstrap-datetimepicker.css');
+} 
+
+
+
+ 
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_survey(&$form,$form_state) {
+	global $user;	
+	$form["#attributes"]["name"]="survey_node_form";//attibute for submit
+	$form["#attributes"]["id"]="survey-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-survey-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-survey-form.css';
+	
+	$form['field_survey_questions']['und']['add_more']['#attributes']['onclick'] ='return setNumberQuestion();';
+	$form['field_survey_questions']['und']['add_more']['#attributes']['class'][]='btn-sm';
+	$form['field_survey_questions']['und']['add_more']['#value']="Add Question";
+
+	$form['field_survey_demographics']['und']['add_more']['#attributes']['onclick'] ='return setNumberDemographics();';
+	$form['field_survey_demographics']['und']['add_more']['#attributes']['class'][]='btn-sm';
+	$form['field_survey_demographics']['und']['add_more']['#value']="Add Demographics & Recodes";
+
+    #Configura los botones de adicionar y eliminar preguntas
+	foreach($form['field_survey_questions']['und'] as $key=>$question){		
+		if(is_numeric($key)){
+			$form['field_survey_questions']['und'][$key]['remove_button']['#prefix']='<div class="wrapper-buttom-remove-question">';
+			$form['field_survey_questions']['und'][$key]['remove_button']['#suffix']='</div>';
+			
+			$form['field_survey_questions']['und'][$key]['remove_button']['#attributes']['class'][]='btn-sm button-remove-question';
+			$form['field_survey_questions']['und'][$key]['remove_button']['#value']="Remove Question";
+		}
+	}
+    
+    #Configura los botones de adicionar y eliminar Demographics 
+	foreach($form['field_survey_demographics']['und'] as $key=>$question){		
+		if(is_numeric($key)){
+			$form['field_survey_demographics']['und'][$key]['remove_button']['#prefix']='<div class="wrapper-buttom-remove-question-control">';
+			$form['field_survey_demographics']['und'][$key]['remove_button']['#suffix']='</div>';
+			
+			$form['field_survey_demographics']['und'][$key]['remove_button']['#attributes']['class'][]='btn-sm button-remove-question-control';
+			$form['field_survey_demographics']['und'][$key]['remove_button']['#value']="Remove Demographics & Recodes";
+		}
+	}	
+
+	if (in_array('super admin', $user->roles)){
+	  		$id_company=0;
+	  }else{
+	  		$user_data = user_load($user->uid); //carga los datos del usuario actual
+	  		$id_company=_survey_cygnal_get_company_current_user($user_data);
+	  }	  
+	  $data = array('id_company' => $id_company,'id_consultant' => 0);	 
+	  $records_consumer=_survey_cygnal_get_customer($data);
+	  drupal_add_js( array( 'records_consumer' => $records_consumer ), 'setting' );
+
+	  $data = array('id_company' => $id_company);	 
+	  $records_consultant=_survey_cygnal_get_consultant($data);
+	  drupal_add_js( array( 'records_consultant' => $records_consultant ), 'setting' );
+
+
+	$form['#after_build'][] = 'survey_cygnal_after_build';
+} 
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_survey_status(&$form,$form_state) {	
+	$form['#after_build'][] = 'survey_cygnal_after_build';
+} 
+
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_frame(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="frame_node_form";//attibute for submit
+	$form["#attributes"]["id"]="frame-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-frame-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-frame-form.css';
+} 
+
+ /**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_quota(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="quota_node_form";//attibute for submit
+	$form["#attributes"]["id"]="quota-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-quota-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-quota-form.css';
+} 
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_consumer(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="consumer_node_form";//attibute for submit
+	$form["#attributes"]["id"]="consumer-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-consumer-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-consumer-form.css';
+}
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_consultant(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="consultant_node_form";//attibute for submit
+	$form["#attributes"]["id"]="consultant-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-consultant-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-consultant-form.css';
+}
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_question_bank(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="question_bank_node_form";//attibute for submit
+	$form["#attributes"]["id"]="question-bank-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-question-bank-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-question-bank-form.css';
+} 
+
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_demographics_bank(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="demographics_recode_bank_node_form";//attibute for submit
+	$form["#attributes"]["id"]="demographics-recode-bank-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-demographics-bank-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-demographics-bank-form.css';
+} 
+
+/**
+ * functiuon _survey_cygnal_form_alter_custom().
+ *           Altera el formulario de Encuesta y el de Quota para configuracíon especial en tiempo de ejecusión
+ */
+function _survey_cygnal_form_alter_custom_company(&$form,$form_state) {
+		
+	$form["#attributes"]["name"]="company_node_form";//attibute for submit
+	$form["#attributes"]["id"]="company-node-form";//attibute for submit
+
+	if(!is_numeric($form['nid']['#value'])){
+		$form['title']['#default_value']="N/A"; 
+	}
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_form_alter_custom_attach($form);
+	#Custon js	
+	$form['#attached']['js'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/js/cygnal-company-form.js';
+	#custom css
+	$form['#attached']['css'][] = drupal_get_path('module', 'survey_cygnal') . '/theme/css/cygnal-company-form.css';
+} 
+
+
+ /**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_survey(&$node) {
+	global $base_url,$user;
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js
+	drupal_add_js(drupal_get_path('theme', 'bootstrap') . '/js/custom.js');	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-survey-node.js");
+	drupal_add_js( array( 'base_url' => $base_url ), 'setting' );
+
+	foreach($user->roles as $key=>$role){  
+		if($key!=2){  
+			$rol_usuario=$key;
+		}
+	}
+	drupal_add_js( array( 'RoleId' => $rol_usuario ), 'setting' );
+
+
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-survey-node.css");	
+} 
+
+ /**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_frame(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-frame-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-frame-node.css");	
+} 
+
+ /**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_quota(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-quota-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-quota-node.css");	
+} 
+
+ /**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_consumer(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-consumer-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-consumer-node.css");	
+} 
+
+/**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_consultant(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-consultant-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-consultant-node.css");	
+} 
+
+/**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_question_bank(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-question-bank-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-question-bank-node.css");	
+}
+
+/**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_demographics_bank(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-demographics-bank-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-demographics-bank-node.css");	
+} 
+
+/**
+ * Funcion que altera el nodo.
+ */
+function _survey_cygnal_node_alter_custom_company(&$node) {
+	#Incluye los archivo cc, ja, y variables de control
+	_survey_cygnal_node_alter_custom_attach();
+	#Custon js	
+	drupal_add_js(drupal_get_path('module', 'survey_cygnal') . "/theme/js/cygnal-company-node.js");
+	#custom css
+	drupal_add_css(drupal_get_path('module', 'survey_cygnal') . "/theme/css/cygnal-company-node.css");	
+} 
+
+/**
+ * functiuon _survey_cygnal_get_statuses_by_rol().
+ *           Construye las opciones del campo de estado segun el rol y el estado actual de la encuesta
+ */
+function _survey_cygnal_get_statuses_by_rol($form) {
+	global $user;
+	$user_data = user_load($user->uid); //load data user current
+	$estados=array();
+	
+	$tid=$form['field_survey_status'][LANGUAGE_NONE]['#default_value'][0];	//obtiene el termino_id del campo estado con el valor actual	
+	$term=taxonomy_term_load($tid); // Carga la informacion del campo estado actual
+	
+	$estados_visibles=$term->field_tax_survey_status_status[LANGUAGE_NONE];	//Carga del campo actual, cuales son los estados visibles configurados.
+	foreach($estados_visibles as $estado_visible){ //Recorre cada uno de los estados que estan visibles para el estado actual
+		$term=taxonomy_term_load($estado_visible["tid"]); //Carga la informacion completa del termino _id del estado visible
+		$acceso=false;//se define en false, para que en el proceso de comparacion de rol frente a permitidos, se identifique si se asigna o no el estado 
+		if(isset($term->field_tax_survey_status_rol[LANGUAGE_NONE])){
+			$roles_permitidos=$term->field_tax_survey_status_rol[LANGUAGE_NONE];//obtiene los roles permitidos del estado que se va a poner como visible			
+			foreach($user->roles as $key=>$rol){//Recorre los roles que tiene asignado el usuario			
+				foreach($roles_permitidos as $role_permitido){//Recorre los roles permitidos para cada uno  de los roles que tiene asignado el usuario
+					if($role_permitido["rid"]==$key){//compara si el rol permitido es igual al rol del usuario, en caso de ser cierto, se autoriza asignar el estado 
+						$acceso=true;//autoriza asignacion de estado en el listado de siponibles
+						continue;	
+					}	
+				}
+				
+			}
+		}
+		
+		if($acceso==true){
+			$estados[$term->tid]=$term->name;//Construye un array con los estados que puede visualizar el usuario en ese estado actual
+		} 
+	} 
+		
+	return($estados);   	 	
+}
+
+
+/**
+  * _survey_cygnal_get_company_current_user
+  * obtiene el id de la comañia del usuario actual
+**/
+function _survey_cygnal_get_company_current_user($user_data){
+	
+	$id_company=0;
+	if(isset($user_data->field_user_company[LANGUAGE_NONE])){
+		$id_company=$user_data->field_user_company[LANGUAGE_NONE][0]["nid"];
+	}
+	
+	return $id_company;	
+}
+
+/**
+  * _survey_cygnal_get_company_current_user
+  * obtiene el id de la comañia del usuario actual
+**/
+function _survey_cygnal_get_consumer_current_user($user_data){
+	
+	$id_consumer=0;
+	if(isset($user_data->field_user_consumer[LANGUAGE_NONE])){
+		$id_consumer=$user_data->field_user_consumer[LANGUAGE_NONE][0]["nid"];
+	}
+	
+	return $id_consumer;	
+}
+
+/**
+  * _survey_cygnal_get_company_current_user
+  * obtiene el id de la comañia del usuario actual
+**/
+function _survey_cygnal_get_consultant_current_user($user_data){
+	
+	$id_consultant=0;
+	if(isset($user_data->field_user_consultant[LANGUAGE_NONE])){
+		$id_consultant=$user_data->field_user_consultant[LANGUAGE_NONE][0]["nid"];
+	}
+	
+	return $id_consultant;	
+}
+
+
+
+
+function _survey_cygnal_user_approve($node,$data){
+	$usuarios=array();
+	
+	$usuarios[0]=array("firstname"=>"Alberto",
+					"lastname"=>"Chaves",
+		            "mail"=>"mackpipe@gmail.com");
+	return $usuarios;
+}
+
+function _survey_cygnal_node_to_array($node){
+	$data=array();
+	$data["nid"]="211";
+	$data["project_id"]="1000";
+	$data["district"]="Florida Senate District 2";
+	
+	return $data;
+}
+
+/*
+ * Funcion que evalua si debe notificar al consumer
+ */
+function _survey_cygnal_notify_approve($node){
+	$path = drupal_get_path('module', 'survey_cygnal');
+	require_once "$path/includes/survey_cygnal.mail.inc";
+	require_once "$path/process/survey_cygnal_survey.inc";
+	$data["node"]=_survey_cygnal_node_to_array($node);//Se pasa a la estructura la informacion del nodo, para tratarla en el pdf y el mail m
+	$data["users"]=_survey_cygnal_user_approve($node,$data);
+	
+	$datos=_survey_cygnal_survey_get_info_node($node);
+	$filename=_survey_cygnal_survey_build_file($datos,"mail");//Obtiene el PDF 	
+	$data["subject"]="Approved";	
+	$data["withAttach"]=true;	
+	$data["attach"]["attach"]=$filename;
+	$data["attach"]["attachName"]=utf8_decode("Survey ".$data["node"]["project_id"].$data["node"]["district"]);	
+	$data["attach"]["attachBase"]="base64";
+	$data["attach"]["attachType"]="application/pdf";
+	
+
+	_survey_cygnal_approved_mail($data);
+}
+
+/*
+ * Funcion que evalua si debe notificar al consumer
+ */
+function _survey_cygnal_notify($node){
+	
+	if(isset($node->field_survey_status[LANGUAGE_NONE])){
+		$id_status=$node->field_survey_status[LANGUAGE_NONE][0]["tid"];
+		$term_status=taxonomy_term_load($id_status);
+		$code_status=strtoupper($term_status->field_tax_survey_status_code[LANGUAGE_NONE][0]["value"]);
+	}
+
+	if(is_numeric($code_status)){
+		switch ($code_status) {
+			case 1://Created
+							
+				break;
+			case 2://Pending
+				
+				break;
+			case 3://Review by director
+				
+				break;
+			case 4://Review by consumer
+				_survey_cygnal_notify_approve($node);
+				break;
+			case 5://Approved
+				
+				break;
+			case 6://Execution
+				
+				break;
+			case 7://Completed
+				
+				break;
+			case 8://Closed
+				
+				break;
+			case 9://Pending for change
+				
+				break;
+			case 10://Cancelled
+				
+				break;
+			case 11://Deleted
+				
+				break;	
+		}
+	}	
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_survey_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_survey_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);		
+			$node->field_survey_company[LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	 
+    }
+	return $node;
+}
+
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_quota_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_quota_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);		
+			$node->field_quota_company[LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	 
+    }
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_frame_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_frame_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);		
+			$node->field_frame_company[LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	 
+    }
+	return $node;
+}
+
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_consultant_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_consultant_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);		
+			$node->field_consultant_company[LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	 
+    }
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_question_bank_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_question_bank_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);			
+			$node->field_question_bank_company[LANGUAGE_NONE][0]['nid']=$id_company;
+	 	}
+    }
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_demographics_bank_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_demographics_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);		
+			$node->field_demographics_company[LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	 
+    }
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo del consumer
+ */
+function _survey_cygnal_set_consumer_company($node){
+	global $user;
+	if(!is_numeric($node->nid)){
+		if(!isset($node->field_consumer_company[LANGUAGE_NONE][0])){
+			$user_data = user_load($user->uid); //carga los datos del usuario actual
+			$id_company=_survey_cygnal_get_company_current_user($user_data);		
+			$node->field_consumer_company[LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	 
+    }
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia de la cuenta del usuario que se esta creando
+ */
+function _survey_cygnal_set_user_company(&$edit){
+	global $user;	
+	$user_data = user_load($user->uid); //carga los datos del usuario actual
+	$id_company=_survey_cygnal_get_company_current_user($user_data);
+	if($id_company!=0){		
+		if(!isset($edit['field_user_company'][LANGUAGE_NONE][0])){
+			$edit['field_user_company'][LANGUAGE_NONE][0]['nid']=$id_company;
+		}
+	}
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_survey_question_num($node){
+		
+	$question_num=count($node->field_survey_questions[LANGUAGE_NONE]);
+	$node->field_survey_question_number[LANGUAGE_NONE][0]['value']=$question_num;	
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_survey_title($node){
+	//if(!is_numeric($node->nid)){	 		
+		/*if(isset($node->field_survey_project_id[LANGUAGE_NONE])){
+			$node->title=trim($node->field_survey_project_id[LANGUAGE_NONE][0]["value"]);//se asigna la pregunta al titulo
+		}*/	
+	//}
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_consumer_title($node){
+	//if(!is_numeric($node->nid)){			
+		$node->title=trim($node->field_consumer_name[LANGUAGE_NONE][0]["value"]);//se asigna la pregunta al titulo
+	//}
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_consultant_title($node){
+	//if(!is_numeric($node->nid)){			
+		$node->title=trim($node->field_consultant_name[LANGUAGE_NONE][0]["value"]);//se asigna el name al titulo
+	//}
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_question_bank_title($node){
+	//if(!is_numeric($node->nid)){			
+		if(isset($node->field_cll_survey_question[LANGUAGE_NONE][0]["field_cll_survey_question_script"][LANGUAGE_NONE])){
+			$node->title=trim($node->field_cll_survey_question[LANGUAGE_NONE][0]["field_cll_survey_question_script"][LANGUAGE_NONE][0]["value"]);//se asigna la pregunta al titulo
+		}
+	//}
+	return $node;
+}
+
+/*
+ * Funcion que obtiene la compañia del usuario existente y la almacena en el campo de compañia del nodo de la encuesta
+ */
+function _survey_cygnal_set_demographics_bank_title($node){
+	//if(!is_numeric($node->nid)){			
+		if(isset($node->field_survey_question_control[LANGUAGE_NONE][0]["field_cll_survey_quest_label"][LANGUAGE_NONE])){
+			$node->title=trim($node->field_survey_question_control[LANGUAGE_NONE][0]["field_cll_survey_quest_label"][LANGUAGE_NONE][0]["value"]);//se asigna la pregunta al titulo
+		}
+	//}
+	return $node;
+}
+
+function _survey_cygnal_validate_survey_title(){
+	
+	$path = drupal_get_path('module', 'survey_cygnal');
+ 	require_once "$path/includes/survey_cygnal.db.inc";  
+	$data=array("nid"=>$_POST["nid"],
+		        "title"=>trim($_POST["title"]));  
+	$resultado=_survey_cygnal_db_validate_survey_title($data); 
+	drupal_json_output($resultado); 
+}
+
+ function _survey_cygnal_get_customer($data){	  
+	  $path = drupal_get_path('module', 'survey_cygnal');
+ 	  require_once "$path/includes/survey_cygnal.db.inc";  
+	  
+	  $resultado=_survey_cygnal_db_get_customer($data); 
+	  return $resultado;
+ }
+
+ function _survey_cygnal_get_consultant($data){	  
+	  $path = drupal_get_path('module', 'survey_cygnal');
+ 	  require_once "$path/includes/survey_cygnal.db.inc";  
+	  
+	  $resultado=_survey_cygnal_db_get_consultant($data); 
+	  return $resultado;
+ }
+
+ function _survey_cygnal_get_customer_by_consultant_data(){
+	  global $user;
+
+	  if (in_array('super admin', $user->roles)){
+	  		$id_company=0;
+	  }else{
+	  		$user_data = user_load($user->uid); //carga los datos del usuario actual
+	  		$id_company=_survey_cygnal_get_company_current_user($user_data);
+	  }	  
+	  $data = array('id_company' => $id_company,
+	  				'id_consultant' => $_POST["id"]);	
+	  
+	  $resultado=_survey_cygnal_get_customer($data);
+
+	  drupal_json_output($resultado); 
+ }
+
+function _survey_cygnal_get_question_bank(){
+	  global $user,$base_url;
+	    
+	  #$filters = array('field_agu_nui_value' => $_POST["documento"],
+	  #	               'field_agu_tii_tid' => $_POST["tipo_documento"]);	
+	 
+	  $view = views_get_view('question_bank');
+	  $view->set_display('block_1');
+	  #$view->set_exposed_input($filters); // Set exposed filters
+	  $result = $view->preview();
+	 // $result = $view->result;
+	
+	drupal_json_output($result); 
+ }
+
+ function _survey_cygnal_get_question_bank_data(){
+	global $user,$base_url;
+	$data=array();
+	$node=node_load($_POST["nid"]);
+	$id_question=$node->field_cll_survey_question[LANGUAGE_NONE][0]["value"];
+	$item_question=entity_load('field_collection_item', array($id_question));
+	
+	$data["question_script"]=isset($item_question[$id_question]->field_cll_survey_question_script[LANGUAGE_NONE])?$item_question[$id_question]->field_cll_survey_question_script[LANGUAGE_NONE][0]["value"]:"";
+	$data["question_xtab"]=isset($item_question[$id_question]->field_cll_survey_question_xtab[LANGUAGE_NONE])?$item_question[$id_question]->field_cll_survey_question_xtab[LANGUAGE_NONE][0]["value"]:"";
+	$data["question_type"]=$item_question[$id_question]->field_cll_survey_question_type[LANGUAGE_NONE][0]["tid"];
+	$data["instruction_he"]=isset($item_question[$id_question]->field_cll_survey_question_txt_he[LANGUAGE_NONE])?$item_question[$id_question]->field_cll_survey_question_txt_he[LANGUAGE_NONE][0]["value"]:"";
+	$data["instruction_fo"]=isset($item_question[$id_question]->field_cll_survey_question_txt_fo[LANGUAGE_NONE])?$item_question[$id_question]->field_cll_survey_question_txt_fo[LANGUAGE_NONE][0]["value"]:"";
+	$data["instruction_op"]=isset($item_question[$id_question]->field_cll_survey_question_txt_op[LANGUAGE_NONE])?$item_question[$id_question]->field_cll_survey_question_txt_op[LANGUAGE_NONE][0]["value"]:"";
+
+	if(isset($item_question[$id_question]->field_cll_survey_question_option[LANGUAGE_NONE])){
+		$id_option=$item_question[$id_question]->field_cll_survey_question_option[LANGUAGE_NONE][0]["value"];
+		$item_option=entity_load('field_collection_item', array($id_option));
+		
+		$data["response_script"]=isset($item_option[$id_option]->field_cll_survey_quest_opt_txt[LANGUAGE_NONE])?$item_option[$id_option]->field_cll_survey_quest_opt_txt[LANGUAGE_NONE][0]["value"]:"";
+		$data["response_xtab"]=isset($item_option[$id_option]->field_cll_survey_quest_opt_xtab[LANGUAGE_NONE])?$item_option[$id_option]->field_cll_survey_quest_opt_xtab[LANGUAGE_NONE][0]["value"]:"";
+		$data["response_instruction"]=isset($item_option[$id_option]->field_cll_survey_quest_opt_inst[LANGUAGE_NONE])?$item_option[$id_option]->field_cll_survey_quest_opt_inst[LANGUAGE_NONE][0]["value"]:"";
+	}	
+	drupal_json_output($data); 
+ }
+
+ function _survey_cygnal_get_demographics_bank(){
+	  global $user,$base_url;
+	    
+	  #$filters = array('field_agu_nui_value' => $_POST["documento"],
+	  #	               'field_agu_tii_tid' => $_POST["tipo_documento"]);	
+	 
+	  $view = views_get_view('demographics_bank');
+	  $view->set_display('block_1');
+	  #$view->set_exposed_input($filters); // Set exposed filters
+	  $result = $view->preview();
+	 // $result = $view->result;
+	
+	drupal_json_output($result); 
+ }
+
+ function _survey_cygnal_get_demographics_bank_data(){
+	global $user,$base_url;
+	$data=array();
+	$node=node_load($_POST["nid"]);
+	/*echo "<pre>";
+	print_r($node);
+	echo "</pre>";
+	exit(0);*/
+	$id_demographics=$node->field_survey_question_control[LANGUAGE_NONE][0]["value"];
+	$item_demographics=entity_load('field_collection_item', array($id_demographics));
+	
+	$data["label_script"]=isset($item_demographics[$id_demographics]->field_cll_survey_quest_label[LANGUAGE_NONE])?$item_demographics[$id_demographics]->field_cll_survey_quest_label[LANGUAGE_NONE][0]["value"]:"";
+	$data["label_xtab"]=isset($item_demographics[$id_demographics]->field_cll_survey_quest_xtab[LANGUAGE_NONE])?$item_demographics[$id_demographics]->field_cll_survey_quest_xtab[LANGUAGE_NONE][0]["value"]:"";
+	
+	$data["option_script"]=isset($item_demographics[$id_demographics]->field_cll_survey_quest_opt_scr[LANGUAGE_NONE])?$item_demographics[$id_demographics]->field_cll_survey_quest_opt_scr[LANGUAGE_NONE][0]["value"]:"";
+	$data["option_xtab"]=isset($item_demographics[$id_demographics]->field_cll_survey_quest_option_xt[LANGUAGE_NONE])?$item_demographics[$id_demographics]->field_cll_survey_quest_option_xt[LANGUAGE_NONE][0]["value"]:"";
+	$data["option_instruction"]=isset($item_demographics[$id_demographics]->field_cll_survey_quest_option_in[LANGUAGE_NONE])?$item_demographics[$id_demographics]->field_cll_survey_quest_option_in[LANGUAGE_NONE][0]["value"]:"";
+		
+	drupal_json_output($data); 
+ }
+
+ function _survey_cygnal_get_response_bank_data(){
+	global $user,$base_url;
+	$data=array();
+	$term=taxonomy_term_load($_POST["tid"]);
+	if(isset($term->description)){			
+		$data["response_script"]=$term->description;		
+		$data["response_instruction"]="";
+	}	
+	drupal_json_output($data); 
+ }
+
+
+/*function _survey_cygnal_get_name_real_user($uid){	 	
+	$profile_main = profile2_load_by_user($uid, 'main');//Ontiene los campos del perfil del usuario	
+	$nombre_usuario = isset($profile_main->field_main_profile_nombres[LANGUAGE_NONE]) ? $profile_main->field_main_profile_nombres[LANGUAGE_NONE][0]["value"] : '';
+	$apellido_usuario = isset($profile_main->field_main_profile_apellidos[LANGUAGE_NONE]) ? $profile_main->field_main_profile_apellidos[LANGUAGE_NONE][0]["value"] : '';
+	$usuario=$nombre_usuario." ".$apellido_usuario;	 
+	if(trim($usuario)==""){
+		$usuario_load=user_load($uid); //Obtiene la informacion de la cuenta del usuario	
+		if(!empty($usuario_load)){
+			$usuario=$usuario_load->name;
+		}
+	}
+	return $usuario; 
+ }*/
